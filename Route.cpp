@@ -67,14 +67,14 @@ void WriteRouteFromConsole(Route& route)
 }
 
 
-int FindRouteTo(Route* route, int stationsCount, string nameStop)
+int FindRoute(Route* route, int stationsCount, string nameStation)
 {
 	int findResult = -1;
 	for (int i = 0; i < stationsCount; ++i)
 	{
 		for (int j = 0; j <= route[i].CountStations; ++j)
 		{
-			if (route[i].NameStation[j] == nameStop)
+			if (route[i].NameStation[j] == nameStation)
 			{
 				findResult = i;
 				return findResult;
@@ -84,7 +84,7 @@ int FindRouteTo(Route* route, int stationsCount, string nameStop)
 	return findResult;
 }
 
-
+//TODO: не логика класса, вынести
 void DemoRoute()
 {
 	const int maxRoutes = 5;
@@ -116,7 +116,7 @@ void DemoRoute()
 	cout << endl << "Enter the name of station to search: ";
 	string nameStop;
 	getline(cin, nameStop);
-	int resultSearch = FindRouteTo(routes, countRoutes, nameStop);
+	int resultSearch = FindRoute(routes, countRoutes, nameStop);
 	if (resultSearch != -1)
 	{
 		cout << endl << "Result of search: ";
