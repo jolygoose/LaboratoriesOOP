@@ -58,7 +58,7 @@ Rectangle::Rectangle(double length, double width, double x, double y)
 	this->SetYPoint(y);
 }
 
-
+//TODO: все что ниже к логике класса не относится, вынести
 void Rectangle::ShowRectangle()
 {
 	cout << "X = " << this->GetCenterPoint().GetXPoint()

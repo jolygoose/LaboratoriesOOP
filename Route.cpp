@@ -8,6 +8,7 @@ void SetNumber(Route& route, int number)
 void SetPeriodicity(Route& route, int periodicity)
 {
 	route.Periodicity = periodicity;
+	//TODO: проверка и выброс исключений до присваивания в поле желательно
 	if (periodicity > 360)
 	{
 		throw exception("Periodicity cannot be more than 360 and smaller than 0");

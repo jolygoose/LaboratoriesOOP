@@ -9,7 +9,7 @@
 #include "Common.h"
 
 using namespace std;
-
+//TODO: там в задании разве не все надо на классы переделать?
 struct Route
 {
 	int Number;
@@ -22,7 +22,7 @@ struct Route
 void SetNumber(Route& route, int number);
 
 void SetPeriodicity(Route& route, int periodicity);
-
+//TODO: имя сеттера не совпадает с полем которое он устанавливает
 void SetDuration(Route& route, int averageDuration);
 
 void SetCountStations(Route& route, int countStations);

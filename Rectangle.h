@@ -18,6 +18,7 @@ private:
 	Point _centerPoint;
 
 public:
+	//TODO: нет определения для этой сигнатуры
 	void SetRectangle(double length, double width, double x, double y);
 
 	void SetLength(double length);

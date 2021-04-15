@@ -18,7 +18,7 @@ private:
 
 public:
 	Flight();
-
+	//TODO: если это номер рейста то может лучше flightNumber?
 	Flight(int nubmerFlight, string depatrurePoint,
 		string arrivePoint, Time* departureTime, Time* arriveTime);
 

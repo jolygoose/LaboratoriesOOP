@@ -10,7 +10,7 @@ void Band::SetHistory(string history)
 {
 	this->_history = history;
 }
-
+//TODO: множественное число, альбомов то у группы может быть больше одного
 void Band::SetAlbum(Album* album)
 {
 	this->_album = album;
@@ -19,6 +19,7 @@ void Band::SetAlbum(Album* album)
 
 Song* Band::GetAllSongs(int& allSongsCount)
 {
+	//TODO:почему счетчики заданы хардкодом, а не берутся на ходу, если альбомов будет больше 3х и песен в них по разному то все сломается? 
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 4; j++)
@@ -45,9 +46,10 @@ Song* Band::GetAllSongs(int& allSongsCount)
 	}
 	return song;
 }
-
+//TODO: просто жанр назови без finding, -ing это вроде длящийся во времени процесс
 Song* Band::GetAllGenreSongs(Genre findingGenre, int& allSongsCount)
 {
+	//TODO: то же самое, почему константное количество альбомов и песен в них?
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 4; j++)
@@ -118,14 +120,15 @@ Album* Band::FindAlbum(string songTitle)
 	return nullptr;
 }
 
-
+//TODO: вообще все эти демо нужно бы вынести в отельный файл, тот же main, т.к. это уже не логика класса, его методы и т.д. а использование
 void Band::DemoBand()
 {
 	const int countSongs = 4;
+	//TODO: утечка памяти
 	Song* firstSongs = new Song[countSongs];
 	Song* secondSongs = new Song[countSongs];
 	Song* thirdSongs = new Song[countSongs];
-
+	
 	firstSongs[0].Song::Song("First song", 10, Genre::ClassicRock);
 	firstSongs[1].Song::Song("Second song", 20, Genre::ClassicRock);
 	firstSongs[2].Song::Song("Folk test song", 30, Genre::FolkRock);

@@ -13,6 +13,7 @@ private:
 	Album* _album;
 
 public:
+	//TODO: нет определения для этой сигнатуры
 	void SetBand(string title, string history, Album* album);
 
 	void SetTitle(string title);

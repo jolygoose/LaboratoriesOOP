@@ -8,7 +8,7 @@
 #include <string>
 
 using namespace std;
-
+//TODO: вынести в отдельный файл
 enum class Genre
 {
 	PopRock,
@@ -33,7 +33,7 @@ public:
 	void SetGenre(Genre genre);
 
 	string GetSongTitle();
-
+	//TODO: зачем здесь перед типом enum, если он уже раньше объ€влен как enum
 	enum Genre GetGenreMusic();
 
 	Song();

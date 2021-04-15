@@ -9,7 +9,7 @@ void Album::SetYear(int year)
 {
 	this->_year = year;
 }
-
+//TODO: как это у альбома поле альбом? может songs?
 void Album::SetAlbum(Song* album)
 {
 	this->_album = album;
@@ -26,7 +26,9 @@ Song* Album::GetAlbumSong()
 	return this->_album;
 }
 
-
+//TODO: деструктора нет, утечка памяти из-за массива песен, проверь на то же самое другие классы,
+//если есть поле-указатель с массивом, то в деструкторе на него нужен delete
+//да и в принципе если создал динамический массив, не забуть освободить память
 Album::Album()
 {
 

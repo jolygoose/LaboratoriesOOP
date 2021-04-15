@@ -2,6 +2,7 @@
 
 void Time::SetYear(int year)
 {
+	//TODO: то есть год позже текущего выставить можно? попробуй сделать функцию, которая берет программно текущий год и проверять ею дату здесь 
 	if (year < 0)
 	{
 		throw exception("Count of years cannot be less than 0");
@@ -86,7 +87,7 @@ Time::Time(int year, int month, int day, int hour, int minute)
 	this->SetMinute(minute);
 }
 
-
+//TODO: это уже не логика класса, а консольный вывод, его вынести отдельно, опять же main или создать файл с методами выводов сущностей в консоль и использовать его в main
 void Time::ShowTime()
 {
 	if (this->GetDay() < 10)
