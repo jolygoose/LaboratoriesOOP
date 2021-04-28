@@ -14,7 +14,7 @@ private:
 	// История
 	string _history;
 	// Список альбомов
-	Album* _album;
+	Album* _albums;
 
 public:
 	/// @brief Функция-сеттер названия группы
@@ -35,13 +35,14 @@ public:
 	/// @brief Функция получения списка всех песен
 	/// 
 	/// @param songsCount - количество песен
-	Song* GetAllSongs(int& songsCount);
+	Song* GetAllSongs(int& songsCount, int countSongs, int countAlbums);
 
 	/// @brief Функция получения списка песен определённого жанра
 	/// 
 	/// @param findingGenre - искомый жанр
 	/// @param songsCount - количество песен
-	Song* GetAllGenreSongs(Genre findingGenre, int& songsCount);
+	Song* GetAllGenreSongs(Genre findingGenre, int& allSongsCount,
+		int countSongs, int countAlbums);
 
 	/// @brief Пустой конструктор класса музыкальная группа
 	Band();
@@ -58,7 +59,7 @@ public:
 	/// @param songTitle - искомая песня
 	/// 
 	/// @return Результат поиска песни
-	Song* FindSong(string songTitle);
+	Song* FindSong(string songTitle, int countSongs, int countAlbums);
 
 	/// @brief Функция поиска альбома, в котором содержится
 	/// определённая песня
@@ -68,7 +69,7 @@ public:
 	/// @retval nullptr - песня не найдена
 	/// 
 	/// @return Результат поиска песни
-	Album* FindAlbum(string songTitle);
+	Album* FindAlbum(string songTitle, int countSongs, int countAlbums);
 
 	/// @brief Функция работы с классом музыкальная группа
 	void DemoBand();

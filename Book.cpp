@@ -77,7 +77,7 @@ int FindBookByAuthor(Book* books, int booksCount, string author)
 	return indexResult;
 }
 
-//TODO: вынести из класса, это не логика его работы а уже работа с его экземпл€рами
+
 void DemoBook()
 {
 	const int maxBooks = 5;

@@ -1,6 +1,6 @@
 #include "Flight.h"
 
-//TODO: почему одним сеттером все поля?
+//TODO: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ?
 void Flight::SetFlight(int numberFlight, string departurePoint, string arrivePoint,
 	Time* departureTime, Time* arriveTime)
 {
@@ -9,10 +9,7 @@ void Flight::SetFlight(int numberFlight, string departurePoint, string arrivePoi
 	this->_arrivePoint = arrivePoint;
 	this->_departureTime = *departureTime;
 	this->_arriveTime = *arriveTime;
-	bool isTimeCorrect = 1; //TODO: если уж буль, то и используй true false
-	//TODO: вот что бы такой штуки не было в Time можно перегрузить операторы сравнения ==, >, <, и т.п.
-	//TODO: и здесь просто будет например if(_departureTime => _arriveTime) throw..., да и в самой перегрузке будет строк 6
-	//TODO: но если решишь перегружать один оператор, то тогда нужно будет и все остальные операторы перегрузить
+	bool isTimeCorrect = true; 
 	if (this->_departureTime.GetYear() == this->_arriveTime.GetYear())
 	{
 		if (this->_departureTime.GetMonth() == this->_arriveTime.GetMonth())
@@ -23,27 +20,27 @@ void Flight::SetFlight(int numberFlight, string departurePoint, string arrivePoi
 				{
 					if (this->_departureTime.GetMinute() > this->_arriveTime.GetMinute())
 					{
-						isTimeCorrect = 0;
+						isTimeCorrect = false;
 					}
 				}
 				else if (this->_departureTime.GetHour() > this->_arriveTime.GetHour())
 				{
-					isTimeCorrect = 0;
+					isTimeCorrect = false;
 				}
 			}
 			else if (this->_departureTime.GetDay() > this->_arriveTime.GetDay())
 			{
-				isTimeCorrect = 0;
+				isTimeCorrect = false;
 			}
 		}
 		else if (this->_departureTime.GetMonth() > this->_arriveTime.GetMonth())
 		{
-			isTimeCorrect = 0;
+			isTimeCorrect = false;
 		}
 	}
 	else if (this->_departureTime.GetYear() > this->_arriveTime.GetYear())
 	{
-		isTimeCorrect = 0;
+		isTimeCorrect = false;
 	}
 	if (!isTimeCorrect)
 	{
@@ -78,7 +75,6 @@ Flight::Flight(int numberFlight, string departurePoint, string arrivePoint,
 	this->SetFlight(numberFlight, departurePoint, arrivePoint, departureTime, arriveTime);
 }
 
-//TODO: вывод консольный вынести из класса
 void Flight::ShowFlight()
 {
 	int flightTime = this->GetFlightTimeMinutes();
@@ -95,7 +91,7 @@ void Flight::ShowFlight()
 		<< flightTime % 60 << " minutes" << endl << endl;
 }
 
-//TODO: использование класса вынести
+
 void Flight::DemoFlightWithTime()
 {
 	const int countFlights = 5;

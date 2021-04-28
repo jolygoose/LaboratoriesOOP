@@ -14,7 +14,7 @@ private:
 	// Год выпуска
 	int _year;
 	// Список песен
-	Song* _album;
+	Song* _songs;
 
 public:
 	/// @brief Функция-сеттер для названия альбома
@@ -30,7 +30,7 @@ public:
 	/// @brief Функция-сеттер для списка песен
 	///
 	/// @param album - список песен
-	void SetAlbum(Song* album);
+	void SetSongs(Song* album);
 
 	/// @brief Функция-геттер названия альбома
 	string GetAlbumTitle();

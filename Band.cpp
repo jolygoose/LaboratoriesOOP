@@ -10,21 +10,20 @@ void Band::SetHistory(string history)
 {
 	this->_history = history;
 }
-//TODO: множественное число, альбомов то у группы может быть больше одного
-void Band::SetAlbum(Album* album)
+
+void Band::SetAlbum(Album* albums)
 {
-	this->_album = album;
+	this->_albums = albums;
 }
 
 
-Song* Band::GetAllSongs(int& allSongsCount)
+Song* Band::GetAllSongs(int& allSongsCount, int countSongs, int countAlbums)
 {
-	//TODO:почему счетчики заданы хардкодом, а не берутся на ходу, если альбомов будет больше 3х и песен в них по разному то все сломается? 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < countAlbums; ++i)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < countSongs; ++j)
 		{
-			if (this->_album[i].GetAlbumSong()[j].GetSongTitle() != "")
+			if (this->_albums[i].GetAlbumSong()[j].GetSongTitle() != "")
 			{
 				allSongsCount++;
 			}
@@ -34,11 +33,11 @@ Song* Band::GetAllSongs(int& allSongsCount)
 	int counter = 0;
 	while (counter < allSongsCount)
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < countAlbums; ++i)
 		{
-			for (int j = 0; j < 4; j++)
+			for (int j = 0; j < countSongs; ++j)
 			{
-				song[counter].SetTitle(this->_album[i].
+				song[counter].SetTitle(this->_albums[i].
 					GetAlbumSong()[j].GetSongTitle());
 				counter++;
 			}
@@ -46,30 +45,30 @@ Song* Band::GetAllSongs(int& allSongsCount)
 	}
 	return song;
 }
-//TODO: просто жанр назови без finding, -ing это вроде длящийся во времени процесс
-Song* Band::GetAllGenreSongs(Genre findingGenre, int& allSongsCount)
+
+Song* Band::GetAllGenreSongs(Genre findGenre, int& allSongsCount,
+	int countSongs, int countAlbums)
 {
-	//TODO: то же самое, почему константное количество альбомов и песен в них?
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < countAlbums; ++i)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < countSongs; ++j)
 		{
-			if (this->_album[i].GetAlbumSong()[j].GetGenreMusic() == findingGenre)
+			if (this->_albums[i].GetAlbumSong()[j].GetGenreMusic() == findGenre)
 			{
-				allSongsCount++;
+				++(allSongsCount);
 			}
 		}
 	}
 	Song* song = new Song[allSongsCount];
 	int counter = 0;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < countAlbums; ++i)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < countSongs; ++j)
 		{
-			if (this->_album[i].GetAlbumSong()[j].GetGenreMusic() == findingGenre)
+			if (this->_albums[i].GetAlbumSong()[j].GetGenreMusic() == findGenre)
 			{
-				song[counter].SetTitle(this->_album[i].GetAlbumSong()[j].GetSongTitle());
-				counter++;
+				song[counter].SetTitle(this->_albums[i].GetAlbumSong()[j].GetSongTitle());
+				++(counter);
 			}
 		}
 	}
@@ -90,41 +89,39 @@ Band::Band(string title, string history, Album* album)
 }
 
 
-Song* Band::FindSong(string songTitle)
+Song* Band::FindSong(string songTitle, int countSongs, int countAlbums)
 {
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < countAlbums; ++i)
 	{
-		for (int j = 0; j < 4; ++j)
+		for (int j = 0; j < countSongs; ++j)
 		{
-			if (this->_album[i].GetAlbumSong()[j].GetSongTitle() == songTitle)
+			if (this->_albums[i].GetAlbumSong()[j].GetSongTitle() == songTitle)
 			{
-				return &this->_album[i].GetAlbumSong()[j];
+				return &this->_albums[i].GetAlbumSong()[j];
 			}
 		}
 	}
 	return nullptr;
 }
 
-Album* Band::FindAlbum(string songTitle)
+Album* Band::FindAlbum(string songTitle, int countSongs, int countAlbums)
 {
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < countAlbums; ++i)
 	{
-		for (int j = 0; j < 4; ++j)
+		for (int j = 0; j < countSongs; ++j)
 		{
-			if (this->_album[i].GetAlbumSong()[j].GetSongTitle() == songTitle)
+			if (this->_albums[i].GetAlbumSong()[j].GetSongTitle() == songTitle)
 			{
-				return &this->_album[i];
+				return &this->_albums[i];
 			}
 		}
 	}
 	return nullptr;
 }
 
-//TODO: вообще все эти демо нужно бы вынести в отельный файл, тот же main, т.к. это уже не логика класса, его методы и т.д. а использование
 void Band::DemoBand()
 {
 	const int countSongs = 4;
-	//TODO: утечка памяти
 	Song* firstSongs = new Song[countSongs];
 	Song* secondSongs = new Song[countSongs];
 	Song* thirdSongs = new Song[countSongs];
@@ -154,16 +151,16 @@ void Band::DemoBand()
 	cout << "Band: " << this->_title << " | History: " << this->_history;
 	for (int i = 0; i < countAlbums; ++i)
 	{
-		cout << endl << endl << i + 1 << " Album: " << this->_album[i].GetAlbumTitle();
+		cout << endl << endl << i + 1 << " Album: " << this->_albums[i].GetAlbumTitle();
 		for (int j = 0; j < countSongs; ++j)
 		{
 			cout << endl << "\t" << j + 1 << ") "
-				<< this->_album[i].GetAlbumSong()[j].GetSongTitle();
+				<< this->_albums[i].GetAlbumSong()[j].GetSongTitle();
 		}
 	}
 
 	string songToFind = "Best song";
-	Song* findSong = FindSong(songToFind);
+	Song* findSong = FindSong(songToFind, countSongs, countAlbums);
 	cout << endl << endl << "Search '" << songToFind << "' song: ";
 	if (findSong)
 	{
@@ -174,7 +171,7 @@ void Band::DemoBand()
 		cout << "This song has not been found.";
 	}
 	string songToFindAlbum= "OOP song";
-	Album* findAlbum = FindAlbum(songToFindAlbum);
+	Album* findAlbum = FindAlbum(songToFindAlbum, countSongs, countAlbums);
 	cout << endl << "Search for an album of the song '" << songToFindAlbum << "': ";
 	if (findAlbum)
 	{
@@ -187,20 +184,26 @@ void Band::DemoBand()
 	}
 
 	int allSongsCount = 0;
-	Song* songs = GetAllSongs(allSongsCount);
+	Song* songs = GetAllSongs(allSongsCount, countSongs, countAlbums);
 	cout << endl << endl << "List of songs: ";
 	for (int i = 0; i < allSongsCount; ++i)
 	{
 		cout << endl << "\t" << i + 1 << ". " << songs[i].GetSongTitle();
 	}
 	allSongsCount = 0;
-	Song* classicRockSongs = GetAllGenreSongs(Genre::ClassicRock, allSongsCount);
+	Song* classicRockSongs = GetAllGenreSongs(Genre::ClassicRock, allSongsCount,
+		countSongs, countAlbums);
 	cout << endl << endl << "List of classic rock songs:";
 	for (int i = 0; i < allSongsCount; ++i)
 	{
 		cout << endl << "\t" << i + 1 << ". " << classicRockSongs[i].GetSongTitle();
 	}
 	cout << endl << endl;
+	delete[] firstSongs;
+	delete[] secondSongs;
+	delete[] thirdSongs;
+	delete[] songs;
+	delete[] classicRockSongs;
 }
 
 void BandMain()

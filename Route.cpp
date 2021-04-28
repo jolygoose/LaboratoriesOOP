@@ -7,12 +7,11 @@ void SetNumber(Route& route, int number)
 
 void SetPeriodicity(Route& route, int periodicity)
 {
-	route.Periodicity = periodicity;
-	//TODO: проверка и выброс исключений до присваивания в поле желательно
 	if (periodicity > 360)
 	{
 		throw exception("Periodicity cannot be more than 360 and smaller than 0");
 	}
+	route.Periodicity = periodicity;
 }
 
 void SetDuration(Route& route, int averageDuration)
@@ -22,11 +21,11 @@ void SetDuration(Route& route, int averageDuration)
 
 void SetCountStations(Route& route, int countStations)
 {
-	route.CountStations = countStations;
 	if (countStations > 10)
 	{
 		throw exception("Periodicity cannot be more than 10 and smaller than 0");
 	}
+	route.CountStations = countStations;
 }
 
 
@@ -84,7 +83,6 @@ int FindRoute(Route* route, int stationsCount, string nameStation)
 	return findResult;
 }
 
-//TODO: не логика класса, вынести
 void DemoRoute()
 {
 	const int maxRoutes = 5;
