@@ -38,6 +38,31 @@ public:
 	/// @return Результат расчёта
 	int GetFlightTimeMinutes();
 
+	/// @brief Функция-геттер номера рейса
+	/// 
+	/// @return Результат работы геттера
+	int GetNumberFlight();
+
+	/// @brief Функция-геттер места отправления рейса
+	/// 
+	/// @return Результат работы геттера
+	string GetDeparturePoint();
+
+	/// @brief Функция-геттер места назначения рейса
+	/// 
+	/// @return Результат работы геттера
+	string GetArrivePoint();
+
+	/// @brief Функция-геттер времени отправления рейса
+	/// 
+	/// @return Результат работы геттера
+	Time GetDepartureTime();
+
+	/// @brief Функция-геттер времени прибытия рейса
+	/// 
+	/// @return Результат работы геттера
+	Time GetArriveTime();
+
 	/// @brief Пустой конструктор класса рейс
 	Flight();
 
@@ -50,9 +75,6 @@ public:
 	/// @param arriveTime - время прибытия
 	Flight(int nubmerFlight, string depatrurePoint,
 		string arrivePoint, Time* departureTime, Time* arriveTime);
-
-	/// @brief Функция вывода информации о рейсе на экран
-	void ShowFlight();
 
 	/// @brief Функция работы с классом рейс
 	void DemoFlightWithTime();

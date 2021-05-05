@@ -43,16 +43,6 @@ void SetCountPages(Book& book, int countPages);
 /// @param countAuthors - количество авторов
 void SetCountAuthors(Book& book, int countAuthors);
 
-/// @brief Функция считывания информации о книге с консоли
-/// 
-/// @param book - книга
-void ReadBookFromConsole(Book& book);
-
-/// @brief Функция вывода информации о книге на экран
-/// 
-/// @param book - книга
-void WriteBookToConsole(Book& book);
-
 /// @brief Функция поиска книги определённого автора
 /// 
 /// @param books - список книг

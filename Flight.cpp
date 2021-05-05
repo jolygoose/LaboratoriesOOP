@@ -1,6 +1,6 @@
 #include "Flight.h"
+#include "IOFlight.h"
 
-//TODO: ������ ����� �������� ��� ����?
 void Flight::SetFlight(int numberFlight, string departurePoint, string arrivePoint,
 	Time* departureTime, Time* arriveTime)
 {
@@ -64,6 +64,31 @@ int Flight::GetFlightTimeMinutes()
 	return (hours * 60 + minutes);
 }
 
+int Flight::GetNumberFlight()
+{
+	return this->_numberFlight;
+}
+
+string Flight::GetDeparturePoint()
+{
+	return this->_departurePoint;
+}
+
+string Flight::GetArrivePoint()
+{
+	return this->_arrivePoint;
+}
+
+Time Flight::GetDepartureTime()
+{
+	return this->_departureTime;
+}
+
+Time Flight::GetArriveTime()
+{
+	return this->_arriveTime;
+}
+
 Flight::Flight()
 {
 
@@ -75,58 +100,43 @@ Flight::Flight(int numberFlight, string departurePoint, string arrivePoint,
 	this->SetFlight(numberFlight, departurePoint, arrivePoint, departureTime, arriveTime);
 }
 
-void Flight::ShowFlight()
-{
-	int flightTime = this->GetFlightTimeMinutes();
-	cout << "Flight " 
-		<< this->_numberFlight << " | "
-		<< this->_departurePoint << "-" 
-		<< this->_arrivePoint << ":";
-	cout << "\tDeparture: ";
-	this->_departureTime.ShowTime();
-	cout << "\tArrive: ";
-	this->_arriveTime.ShowTime();
-	cout << endl << "Flight time: "
-		<< flightTime / 60 << " hours "
-		<< flightTime % 60 << " minutes" << endl << endl;
-}
 
 
 void Flight::DemoFlightWithTime()
 {
 	const int countFlights = 5;
-	Flight flight[countFlights];
+	Flight flights[countFlights];
 	Time departureTime[countFlights];
 	Time arriveTime[countFlights];
 
 	departureTime[0].Time::Time(2021, 7, 7, 11, 30);
 	arriveTime[0].Time::Time(2021, 7, 7, 14, 20);
-	flight[0].Flight::Flight(1050, "Moscow", "Berlin", &departureTime[0], &arriveTime[0]);
+	flights[0].Flight::Flight(1050, "Moscow", "Berlin", &departureTime[0], &arriveTime[0]);
 
 	departureTime[1].Time::Time(2021, 9, 26, 7, 15);
 	arriveTime[1].Time::Time(2021, 9, 26, 11, 40);
-	flight[1].Flight::Flight(3090, "Tomsk", "Moscow", &departureTime[1], &arriveTime[1]);
+	flights[1].Flight::Flight(3090, "Tomsk", "Moscow", &departureTime[1], &arriveTime[1]);
 
 	departureTime[2].Time::Time(2021, 7, 1, 14, 50);
 	arriveTime[2].Time::Time(2021, 7, 1, 17, 55);
-	flight[2].Flight::Flight(3060, "Moscow", "Stambul", &departureTime[2], &arriveTime[2]);
+	flights[2].Flight::Flight(3060, "Moscow", "Stambul", &departureTime[2], &arriveTime[2]);
 
 	departureTime[3].Time::Time(2021, 7, 9, 8, 15);
 	arriveTime[3].Time::Time(2021, 7, 9, 9, 5);
-	flight[3].Flight::Flight(3080, "Krasnodar", "Sochi", &departureTime[3], &arriveTime[3]);
+	flights[3].Flight::Flight(3080, "Krasnodar", "Sochi", &departureTime[3], &arriveTime[3]);
 
 	departureTime[4].Time::Time(2021, 5, 18, 6, 30);
 	arriveTime[4].Time::Time(2021, 5, 18, 8, 20);
-	flight[4].Flight::Flight(2060, "Berlin", "London", &departureTime[4], &arriveTime[4]);
+	flights[4].Flight::Flight(2060, "Berlin", "London", &departureTime[4], &arriveTime[4]);
 
 	for (int i = 0; i < countFlights; ++i)
 	{
-		flight[i].ShowFlight();
+		DisplayFlight::ShowFlight(&flights[i]);
 	}
 }
 
 void FlightWithTimeMain()
 {
-	Flight flight;
-	flight.DemoFlightWithTime();
+	Flight flights;
+	flights.DemoFlightWithTime();
 }

@@ -62,9 +62,6 @@ public:
 	/// @param y - координата y центра прямоугольника
 	Rectangle(double length, double width, double x, double y);
 
-	/// @brief Функция вывода на экран информации о прямоугольнике
-	void ShowRectangle();
-
 	/// @brief Функция работы с прямоугольником с центральной точкой
 	void RectangleWithPoint();
 };

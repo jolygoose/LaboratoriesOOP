@@ -23,6 +23,11 @@
     <ClCompile Include="Band.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Common.cpp" />
+    <ClCompile Include="IOBook.cpp" />
+    <ClCompile Include="IOFlight.cpp" />
+    <ClCompile Include="IORectangle.cpp" />
+    <ClCompile Include="IORoute.cpp" />
+    <ClCompile Include="IOTime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Flight.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -37,6 +42,11 @@
     <ClInclude Include="Book.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Flight.h" />
+    <ClInclude Include="IOBook.h" />
+    <ClInclude Include="IOFlight.h" />
+    <ClInclude Include="IORectangle.h" />
+    <ClInclude Include="IORoute.h" />
+    <ClInclude Include="IOTime.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Route.h" />

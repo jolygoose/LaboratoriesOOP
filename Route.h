@@ -49,16 +49,6 @@ void SetDuration(Route& route, int averageDuration);
 /// @param countStations - количество остановок
 void SetCountStations(Route& route, int countStations);
 
-/// @brief Функция считывания с консоли информации о маршруте
-/// 
-/// @param route - маршрут
-void ReadRouteFromConsole(Route& route);
-
-/// @brief Функция вывода на экран информации о маршруте
-/// 
-/// @param route - маршрут
-void WriteRouteFromConsole(Route& route);
-
 /// @brief Функция поиска маршрута, содержащего определённую остановку
 /// 
 /// @param route - маршрут

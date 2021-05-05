@@ -63,7 +63,7 @@ int main()
 			}
 			case MainMenu::Exit:
 			{
-				cout << "Good bye!" << endl;
+				cout << "Goodbye!" << endl;
 				return 0;
 			}
 			default:

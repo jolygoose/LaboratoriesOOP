@@ -1,4 +1,5 @@
 #include "Time.h"
+#include "IOTime.h"
 
 void Time::SetYear(int year)
 {
@@ -84,30 +85,4 @@ Time::Time(int year, int month, int day, int hour, int minute)
 	this->SetDay(day);
 	this->SetHour(hour);
 	this->SetMinute(minute);
-}
-
-
-void Time::ShowTime()
-{
-	if (this->GetDay() < 10)
-	{
-		cout << "0";
-	}
-	cout << this->GetDay() << ".";
-	if (this->GetMonth() < 10)
-	{
-		cout << "0";
-	}
-	cout << this->GetMonth() << "."
-		<< this->GetYear() << " [";
-	if (this->GetHour() < 10)
-	{
-		cout << "0";
-	}
-	cout << this->GetHour() << ":";
-	if (this->GetMinute() < 10)
-	{
-		cout << "0";
-	}
-	cout << this->GetMinute() << "]";
 }

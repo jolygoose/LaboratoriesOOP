@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include "IORectangle.h"
 
 void Rectangle::SetLength(double length)
 {
@@ -58,14 +59,6 @@ Rectangle::Rectangle(double length, double width, double x, double y)
 	this->SetYPoint(y);
 }
 
-void Rectangle::ShowRectangle()
-{
-	cout << "X = " << this->GetCenterPoint().GetXPoint()
-		<< "\t| Y = " << this->GetCenterPoint().GetYPoint()
-		<< "\t| Length = " << this->GetLength()
-		<< "\t| Width = " << this->GetWidth() << endl << endl;
-}
-
 void Rectangle::RectangleWithPoint()
 {
 	const int rectanglesSize = 5;
@@ -78,7 +71,7 @@ void Rectangle::RectangleWithPoint()
 	for (int i = 0; i < rectanglesSize; ++i)
 	{
 		cout << "[" << i + 1 << "] rectangle:" << endl;
-		rectangles[i].ShowRectangle();
+		DisplayRectangle::ShowRectangle(&rectangles[i]);
 	}
 	double xCenter = 0;
 	double yCenter = 0;

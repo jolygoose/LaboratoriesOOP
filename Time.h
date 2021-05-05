@@ -75,9 +75,6 @@ public:
 	/// @param hour - часы
 	/// @param minute - минуты
 	Time(int year, int month, int day, int hour, int minute);
-
-	/// @brief Функция вывода на экран информации о времени
-	void ShowTime();
 };
 
 #endif // !_TIME_H_
