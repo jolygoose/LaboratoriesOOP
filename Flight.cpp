@@ -101,7 +101,6 @@ Flight::Flight(int numberFlight, string departurePoint, string arrivePoint,
 }
 
 
-
 void Flight::DemoFlightWithTime()
 {
 	const int countFlights = 5;
